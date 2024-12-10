@@ -59,7 +59,7 @@ def get_ai_msg(patient_prompt):
          1. **Status**: Identify the patient's health status, such as "stable," "critical," "recovering," "improving," etc.
          2. **Pharmacy**: Extract references to medication, prescriptions, or pharmacy-related details (e.g., medication names, dosages, directions).
          3. **Services**: Extract any references to medical services, tests, or procedures mentioned (e.g., lab tests, imaging, surgeries).
-         4. **Unknown Words**: Flag any terms or phrases that are unfamiliar or do not fit within the recognized categories, indicating the need for further clarification or special handling.
+         4. **details**: Generate a detailed summary with temperature constraints of 1.5, for the patient's health status and the interpretation of their symptoms.
 
          Please note that further clarification or special handling may be needed for the patient's health status and the interpretation of their symptoms."""
         },
@@ -69,23 +69,27 @@ def get_ai_msg(patient_prompt):
              {
                   "status": "stable",
                   "pharmacy": {
-                  "medications": [**separate new medicines, each medicines prescribed should be made put into another category of medicine, expanding their name, dosage, unit, ICD code, frequency of medication**]
-         [
-            {
-                  "name": medicine name,  // This is a literal string, not a placeholder 
-                  "dosage": amount,
-                  "unit" : amount,
-                  "ICD code": ICD code, [(**search the web, get the ICD code form the web**)]
-                  "frequency": frequency [(**Should be detailed about the time period**)]
-             },
-         ]
-     }, ```Observe carefully the format of the response, extracting all the services```
-     "services": {  
-         "tests": [
-            // Provide all the tests that are being prescribed to the patient, if any
-         ]           
+                       "medications": [
+                           {
+                             "name" : (Name of the medicine),
+                             "dosage" : (Dosage of the medicine),
+                             "unit" : (Unit of the medicine),
+                             "frequency" : (Frequency of the medicine)
+                           }
+                       ]
+     }, 
+                 "services": {  
+                      "tests": [
+                           (List of services)
+                           "name" : (Name of the service)
+                           "type" : (Type of the service)
+                           "result" : (Result of the service)]     
      },
-     "unknown_words": [ 
+                 "details":{
+                    "Summary":[
+                     "sum" : (Summary of the report) ]
+                 }
+                
      ]
             """
 

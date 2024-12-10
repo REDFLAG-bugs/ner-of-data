@@ -3,7 +3,7 @@ import json
 from file import get_ai_msg
 
 app = Flask(__name__)
-app.secret_key = "cf8bcd5b6dcf3dd2beaa1534ad1720342e86ccb83f89913e17fd5df73bf0a02e"  # Needed for session management
+app.secret_key = "cf8bcd5b6dcf3dd2beaa1534ad1720342e86ccb83f89913e17fd5df73bf0a02e"
 
 @app.route("/", methods=["GET", "POST"])
 def index():

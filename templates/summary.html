@@ -2,35 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summary</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Summary</h1>
-        <nav>
-            <a href="/">Home</a>
-        </nav>
-    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/medicine">Medicines</a>
+        <a href="/services">Services</a>
+        <a href="/summary">Summary</a>
+    </nav>
     <main>
-        <h2>Medicines</h2>
-        <ul>
-            {% for med in ai_msg_json.pharmacy.medications %}
-                <li>{{ med.name }} - {{ med.dosage }} {{ med.unit }} ({{ med.frequency }})</li>
-            {% endfor %}
-        </ul>
-        <h2>Services</h2>
-        <ul>
-            {% for service in ai_msg_json.services.tests %}
-                <li>{{ service }}</li>
-            {% endfor %}
-        </ul>
-        <h2>Summary</h2>
-        <ul>
-            {% for summary in ai_msg_json.summary %}
-                <li>{{ summary }}: {{ ai_msg_json.summary[summary] }}</li>
-            {% endfor %}
-        </ul>
+        <header>
+            <h1>Summary</h1>
+        </header>
+        <section>
+            <h2>Medicines</h2>
+            <ul>
+                {% for med in ai_msg_json.pharmacy.medications %}
+                    <li>{{ med.name }} - {{ med.dosage }} {{ med.unit }} ({{ med.frequency }})</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Services</h2>
+            <ul>
+                {% for test in ai_msg_json.services.tests %}
+                    <li>{{ test.name }} - {{ test.type }} (Result: {{ test.result }})</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Summary</h2>
+            <ul>
+                {% for summary_item in ai_msg_json.details.Summary %}
+                    <li>{{ summary_item.sum }}</li>
+                {% endfor %}
+            </ul>
+        </section>
     </main>
 </body>
 </html>

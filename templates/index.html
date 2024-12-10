@@ -2,21 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Assistant</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Medical Assistant</h1>
-        <nav>
-            <a href="/">Home</a>
-        </nav>
-    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/medicine">Medicines</a>
+        <a href="/services">Services</a>
+        <a href="/summary">Summary</a>
+    </nav>
     <main>
-        <form method="post">
-            <textarea name="patient_prompt" placeholder="Enter patient details..." required></textarea>
-            <button type="submit">Submit</button>
-        </form>
+        <header>
+            <h1>Medical Assistant</h1>
+        </header>
+        <section>
+            <form method="post">
+                <textarea name="patient_prompt" placeholder="Enter patient details..." required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
     </main>
 </body>
 </html>

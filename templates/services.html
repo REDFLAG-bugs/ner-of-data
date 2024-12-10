@@ -2,23 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Extracted Services</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Extracted Services</h1>
-        <nav>
-            <a href="/">Home</a> |
-            <a href="/summary">Next: Summary</a>
-        </nav>
-    </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/medicine">Medicines</a>
+        <a href="/services">Services</a>
+        <a href="/summary">Summary</a>
+    </nav>
     <main>
-        <ul>
-            {% for service in services %}
-                <li>{{ service }}</li>
-            {% endfor %}
-        </ul>
+        <header>
+            <h1>Extracted Services</h1>
+        </header>
+        <section>
+            <!-- <ul>
+                {% for service in services %}
+                    <li>{{ service.name }}</li>
+                    <li>{{service.type}}</li>
+                {% endfor %}
+            </ul> -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   {% for service in services %}
+                        <tr>
+                            <td>{{ service.name }}</td>
+                            <td>{{ service.type }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
     </main>
 </body>
 </html>
