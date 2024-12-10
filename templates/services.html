@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extracted Services</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Extracted Services</h1>
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/summary">Next: Summary</a>
+        </nav>
+    </header>
+    <main>
+        <ul>
+            {% for service in services %}
+                <li>{{ service }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

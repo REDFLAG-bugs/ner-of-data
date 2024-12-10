@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Summary</h1>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Medicines</h2>
+        <ul>
+            {% for med in ai_msg_json.pharmacy.medications %}
+                <li>{{ med.name }} - {{ med.dosage }} {{ med.unit }} ({{ med.frequency }})</li>
+            {% endfor %}
+        </ul>
+        <h2>Services</h2>
+        <ul>
+            {% for service in ai_msg_json.services.tests %}
+                <li>{{ service }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Summary</h2>
+        <ul>
+            {% for summary in ai_msg_json.summary %}
+                <li>{{ summary }}: {{ ai_msg_json.summary[summary] }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>
