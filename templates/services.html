@@ -27,6 +27,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Code</th>
                         <th>Name</th>
                         <th>Type</th>
                     </tr>
@@ -34,6 +35,7 @@
                 <tbody>
                    {% for service in services %}
                         <tr>
+                            <td>{{ service.code }}</td>
                             <td>{{ service.name }}</td>
                             <td>{{ service.type }}</td>
                         </tr>

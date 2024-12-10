@@ -81,9 +81,9 @@ def get_ai_msg(patient_prompt):
                  "services": {  
                       "tests": [
                            (List of services)
+                           "code" : (Code of the service) (Default:1234)
                            "name" : (Name of the service)
-                           "type" : (Type of the service)
-                           "result" : (Result of the service)]     
+                           "type" : (Type of the service)]   
      },
                  "details":{
                     "Summary":[
