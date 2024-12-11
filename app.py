@@ -26,10 +26,21 @@ def services():
     services = ai_msg_json.get("services", {}).get("tests", [])
     return render_template("services.html", services=services)
 
+@app.route("/diagnosis")
+def diagnosis():
+    ai_msg_json = session.get("ai_msg_json", {})
+    diagnosis = ai_msg_json.get("diagnosis", [])
+    if isinstance(diagnosis, dict):
+        diagnosis = [diagnosis]
+    
+    return render_template("diagnosis.html", diagnosis=diagnosis)
+
 @app.route("/summary")
 def summary():
     ai_msg_json = session.get("ai_msg_json", {})
     return render_template("summary.html", ai_msg_json=ai_msg_json)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

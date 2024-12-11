@@ -54,12 +54,14 @@ def get_ai_msg(patient_prompt):
         {
             "role": "system",
             "content": """
-              You are a medical assistant capable of extracting structured details from unstructured clinical text. Your task is to identify specific categories of information from the provided text. Additionally, you need to identify and flag any unknown or unfamiliar terms that may need further clarification or special handling.
+              You are a medical assistant from INDIA country capable of extracting structured details from unstructured clinical text. Your task is to identify specific categories of information from the provided text. Additionally, you need to identify and flag any unknown or unfamiliar terms that may need further clarification or special handling.
             The categories you need to extract from the text are:
          1. **Status**: Identify the patient's health status, such as "stable," "critical," "recovering," "improving," etc.
          2. **Pharmacy**: Extract references to medication, prescriptions, or pharmacy-related details (e.g., medication names, dosages, directions).
          3. **Services**: Extract any references to medical services, tests, or procedures mentioned (e.g., lab tests, imaging, surgeries).
-         4. **details**: Generate a detailed summary with temperature constraints of 1.5, for the patient's health status and the interpretation of their symptoms.
+         4. **diagnosis**: Identify the diagnosis with a temperature constraint of 1.5(if the diagnosis is unknown or not present in the prompt given), for the patient based on the provided information and symptoms in the prompts. If prompt has diagnosis, use the same.
+         5. **details**: Generate a detailed summary with temperature constraints of 1.5, for the patient's health status and the interpretation of their symptoms.
+         
 
          Please note that further clarification or special handling may be needed for the patient's health status and the interpretation of their symptoms."""
         },
@@ -77,20 +79,22 @@ def get_ai_msg(patient_prompt):
                              "frequency" : (Frequency of the medicine)
                            }
                        ]
-     }, 
+             }, 
                  "services": {  
                       "tests": [
                            (List of services)
                            "code" : (Code of the service) (Default:1234)
                            "name" : (Name of the service)
                            "type" : (Type of the service)]   
-     },
+                              },
                  "details":{
                     "Summary":[
                      "sum" : (Summary of the report) ]
-                 }
-                
-     ]
+                 },
+                 "diagnosis":{ //Provide unique diagnosis for each prompt, if prompt has diagnosis, use the same. No unquiue diagnosis should be repeated
+                     "name" : (Name of the diagnosis, based on the symptoms in the Prompt)
+                    "ICD code" : (ICD code of the diagnosis, from the website for the name you have provided)
+                }
             """
 
 
